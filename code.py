@@ -21,9 +21,10 @@ import neopixel
 
 pixels = neopixel.NeoPixel(board.NEOPIXEL, 1)
 
-white = [255, 255, 255]
-red = [255, 0, 0]
-green = [0, 255, 0]
+white = (255, 255, 255)
+red = (255, 0, 0)
+green = (0, 255, 0)
+x = 0
 
 while True:
     pixels.fill(white)
@@ -32,3 +33,7 @@ while True:
     time.sleep(0.75)
     pixels.fill(green)
     time.sleep(0.75)
+    x = x + 1
+    print(x)
+
+print("Goodbye")
