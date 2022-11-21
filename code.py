@@ -18,6 +18,10 @@ drive to run it.
 import time
 import board
 import neopixel
+import digitalio
+import wifi
+import secrets
+#from adafruit_httpserver import HTTPServer, HTTPResponse
 
 pixels = neopixel.NeoPixel(board.NEOPIXEL, 1)
 
@@ -26,13 +30,19 @@ red = (255, 0, 0)
 green = (0, 255, 0)
 x = 0
 
+ssid = secrets.ssid
+print("Connecting to", ssid)
+wifi.radio.connect(ssid, secrets.password)
+print("Connected to", ssid)
+print(f"Listening on http://{wifi.radio.ipv4_address}")
+
 while True:
     pixels.fill(white)
-    time.sleep(0.75)
+    time.sleep(0.5)
     pixels.fill(red)
-    time.sleep(0.75)
+    time.sleep(0.5)
     pixels.fill(green)
-    time.sleep(0.75)
+    time.sleep(0.5)
     x = x + 1
     print(x)
 
